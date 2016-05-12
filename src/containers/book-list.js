@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 // Importing function that connects redux to react.
 import { selectBook } from "../actions/index";
+import { selectHarry } from "../actions/harryPotter";
 import { bindActionCreators } from "redux";
 // Importing function that connects actions to reducers.
 
@@ -14,13 +15,19 @@ import { bindActionCreators } from "redux";
 // is not connected to redux, only certain components.
 class BookList extends Component {
 
-
   renderList() {
     return this.props.books.map((book) => {
       return (
         <li   
           key={book.title} 
-          onClick={() => this.props.selectBook(book)}
+          onClick={() => {
+            if(book.title === "Harry Potter") {
+              return this.props.selectHarry(book)
+            } else {
+              return this.props.selectBook(book)
+            }
+          }
+          }
           className="list-group-item">
             {book.title}
           </li>
@@ -52,7 +59,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   // Whenever selectBook is called, result should be passed to all of our reducers.
 
-  return bindActionCreators({ selectBook: selectBook }, dispatch);
+  return bindActionCreators({ selectBook: selectBook, selectHarry: selectHarry }, dispatch);
 }
 // NOTE: We can also just add selectBook method into connect directly, like this :
 // connect(mapStateToProps, { selectBook: selectBook }). The connect function will

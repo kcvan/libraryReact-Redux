@@ -7,9 +7,13 @@
 
 // This produces a new piece of application state whenever the BOOK_SELECTED action is
 // triggered.
+// The action is the payload in the object being returned by index.js - actions.
 export default function(state = null, action) {
   switch(action.type) {
     case "BOOK_SELECTED":
+      return action.payload;
+    case "HARRY_SELECTED":
+      alert("You selected Harry!");
       return action.payload;
       // We always want to return a fresh object, meaning we never want to mutate
       // our current state. This means we cannot do something like
