@@ -4,6 +4,9 @@
 // We use state = null as default because when the application first boots up, nothing
 // has been selected yet so the state will actually be undefined. redux doesn't allow
 // a state to be undefined, we have to set it to null.
+
+// This produces a new piece of application state whenever the BOOK_SELECTED action is
+// triggered.
 export default function(state = null, action) {
   switch(action.type) {
     case "BOOK_SELECTED":

@@ -52,8 +52,11 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   // Whenever selectBook is called, result should be passed to all of our reducers.
 
-  return bindActionCreators({ selectBook: selectBook}, dispatch);
+  return bindActionCreators({ selectBook: selectBook }, dispatch);
 }
+// NOTE: We can also just add selectBook method into connect directly, like this :
+// connect(mapStateToProps, { selectBook: selectBook }). The connect function will
+// know about it already. You can also pass through multple methods, not just one.
 
 // connect takes a function(s) and a component and produces a container \/
 // We promote BookList from a component to a container - it needs to know about
