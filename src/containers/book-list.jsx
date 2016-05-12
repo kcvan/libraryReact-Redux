@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+// Importing function that connects redux to react.
+import { selectBook } from "../actions/index";
+import { bindActionCreators } from "redux";
+// Importing function that connects actions to reducers.
+
 // We are going to promote this component to a container, which is a 
 // react component that has a direct connection to the state managed by redux.
 // Containers are also called "smart-components", meaning they are linked
@@ -38,5 +43,15 @@ function mapStateToProps(state) {
   };
 }
 
-// connect takes a function and a component and produces a container \/
-export default connect(mapStateToProps)(BookList);
+// Anything returned from this functionw ill end up as props on the BookList container.
+function mapDispatchToProps(dispatch) {
+  // Whenever selectBook is called, result should be passed to all of our reducers.
+
+  return bindActionCreators({ selectBook: selectBook}, dispatch);
+}
+
+// connect takes a function(s) and a component and produces a container \/
+// We promote BookList from a component to a container - it needs to know about
+// this new dispatch method, selectBook. Make it available as a prop by passing
+// it in to connect.
+export default connect(mapStateToProps, mapDispatchToProps)(BookList);
