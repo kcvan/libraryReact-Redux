@@ -15,6 +15,8 @@ export default function(state = null, action) {
     case "HARRY_SELECTED":
       alert("You selected Harry!");
       return action.payload;
+    case "DEEPER_HARRY_CLICK":
+      alert("You really like HP huh?");
       // We always want to return a fresh object, meaning we never want to mutate
       // our current state. This means we cannot do something like
       // state.title = book.title;
