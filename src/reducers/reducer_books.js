@@ -1,4 +1,4 @@
-// A reducer is just a function that returns a part os the state
+// A reducer is just a function that returns a part of the state
 
 export default function() {
   return [
